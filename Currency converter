@@ -1,0 +1,70 @@
+import java.util.Scanner;
+
+public class CurrencyConverter {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Currency Converter");
+        System.out.println("------------------");
+
+        System.out.print("Enter the amount: ");
+        double amount = scanner.nextDouble();
+
+        System.out.println("From: ");
+        System.out.println("1. USD");
+        System.out.println("2. EUR");
+        System.out.println("3. GBP");
+        System.out.print("Choose an option: ");
+        int fromOption = scanner.nextInt();
+
+        System.out.println("To: ");
+        System.out.println("1. USD");
+        System.out.println("2. EUR");
+        System.out.println("3. GBP");
+        System.out.print("Choose an option: ");
+        int toOption = scanner.nextInt();
+
+        double exchangeRate = getExchangeRate(fromOption, toOption);
+
+        double convertedAmount = amount * exchangeRate;
+
+        System.out.printf("%.2f %s is equal to %.2f %s%n",
+                amount, getCurrencySymbol(fromOption), convertedAmount, getCurrencySymbol(toOption));
+
+        scanner.close();
+    }
+
+    private static double getExchangeRate(int fromOption, int toOption) {
+        // Exchange rates are fictional and used for demonstration purposes only
+        if (fromOption == 1 && toOption == 2) {
+            return 0.88;
+        } else if (fromOption == 1 && toOption == 3) {
+            return 0.76;
+        } else if (fromOption == 2 && toOption == 1) {
+            return 1.14;
+        } else if (fromOption == 2 && toOption == 3) {
+            return 0.86;
+        } else if (fromOption == 3 && toOption == 1) {
+            return 1.32;
+        } else if (fromOption == 3 && toOption == 2) {
+            return 1.16;
+        } else {
+            return 1;
+        }
+    }
+
+    private static String getCurrencySymbol(int option) {
+        if (option == 1) {
+            return "USD";
+        } else if (option == 2) {
+            return "EUR";
+        } else {
+            return "GBP";
+        }
+    }
+}
+```
+
+This code provides a simple console-based currency converter that converts between USD, EUR, and GBP. You can extend it to support more currencies and exchange rates.
